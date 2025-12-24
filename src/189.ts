@@ -1,12 +1,16 @@
 function rotate(nums: number[], k: number): void {
-	const map = new Map<number, number>();
 	k = k % nums.length;
 
-	for (let i = 0; i < nums.length; i++) {
-		const idx = (i - k + nums.length) % nums.length;
-		const num = map.has(idx) ? (map.get(idx) as number) : nums[idx];
-		map.set(i, nums[i]);
-		nums[i] = num;
+	reverce(nums, 0, nums.length - 1);
+	reverce(nums, 0, k - 1);
+	reverce(nums, k, nums.length - 1);
+}
+
+function reverce(nums: number[], x: number, y: number) {
+	while (x < y) {
+		[nums[x], nums[y]] = [nums[y], nums[x]];
+		x++;
+		y--;
 	}
 }
 
