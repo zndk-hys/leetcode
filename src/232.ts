@@ -12,16 +12,16 @@ class MyQueue {
 	}
 
 	pop(): number {
-    this.peek();
+		this.peek();
 		return this.b.pop() as number;
 	}
 
 	peek(): number {
-    if (this.b.length === 0) {
-      while (this.a.length > 0) {
-        this.b.push(this.a.pop() as number);
-      }
-    }
+		if (this.b.length === 0) {
+			while (this.a.length > 0) {
+				this.b.push(this.a.pop() as number);
+			}
+		}
 		return this.b[this.b.length - 1];
 	}
 
