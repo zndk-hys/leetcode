@@ -6,7 +6,7 @@ function dailyTemperatures(temperatures: number[]): number[] {
 	const stack: number[] = [];
 
 	for (let i = 0; i < t.length; i++) {
-		while (stack.length > 0 && t[i] > t[stack[stack.length - 1]]) {
+		while (stack.length > 0 && t[i] as number > (t[stack[stack.length - 1] as number] as number)) {
 			const d = stack.pop() as number;
 			answer[d] = i - d;
 		}
