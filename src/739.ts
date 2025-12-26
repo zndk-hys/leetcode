@@ -8,12 +8,15 @@ function dailyTemperatures(temperatures: number[]): number[] {
 	stack.push(t.length - 1);
 
 	for (let i = t.length - 2; i >= 0; i--) {
-		while (stack.length > 0 && t[stack[stack.length - 1] as number] as number <= (t[i] as number)) {
+		while (
+			stack.length > 0 &&
+			(t[stack[stack.length - 1] as number] as number) <= (t[i] as number)
+		) {
 			stack.pop();
 		}
 
 		if (stack.length !== 0) {
-			answer[i] = stack[stack.length - 1] as number - i;
+			answer[i] = (stack[stack.length - 1] as number) - i;
 		}
 
 		stack.push(i);
