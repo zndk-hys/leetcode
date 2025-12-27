@@ -5,21 +5,32 @@ function threeSum(nums: number[]): number[][] {
 	let i = 0;
 	while (i < sorted.length - 2) {
 		const need1 = 0 - (sorted[i] as number);
-		const map = new Map<number, number>();
+		let left: number = i + 1;
+		let right = sorted.length - 1;
 
-		for (let j = i + 1; j < sorted.length; j++) {
-			const need2 = need1 - (sorted[j] as number);
-			if (map.has(need2)) {
+		while (left < right) {
+			const sum = (sorted[left] as number) + (sorted[right] as number);
+			if (sum === need1) {
 				answer.push([
 					sorted[i] as number,
-					sorted[j] as number,
-					sorted[map.get(need2) as number] as number,
+					sorted[left] as number,
+					sorted[right] as number,
 				]);
-				while (j < sorted.length && sorted[j] === sorted[j + 1]) {
-					j++;
-				}
+				left++;
+				right--;
+			} else if (sum < need1) {
+				left++;
+			} else if (sum > need1) {
+				right--;
 			}
-			map.set(sorted[j] as number, j);
+
+			while (left < right && sorted[left] === sorted[left - 1]) {
+				left++;
+			}
+
+			while (right > left && sorted[right] === sorted[right + 1]) {
+				right--;
+			}
 		}
 
 		i++;
