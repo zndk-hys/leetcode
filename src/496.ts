@@ -1,26 +1,17 @@
 function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
-	if (nums2.length <= 1) return Array(nums1.length).fill(-1);
+	const stack: number[] = [];
+	const map = new Map<number, number>();
 
-	const answer = Array(nums1.length).fill(-1);
-
-	for (let i = 0; i < nums1.length; i++) {
-		let matchIdx: number | null = null;
-		for (let j = 0; j < nums2.length; j++) {
-			if (nums1[i] === nums2[j]) {
-				matchIdx = j;
-				break;
-			}
+	for (let i = 0; i < nums2.length; i++) {
+		while (stack.length && stack[stack.length - 1] < nums2[i]) {
+			map.set(stack.pop() as number, nums2[i]);
 		}
-
-		if (matchIdx !== null) {
-			for (let j = matchIdx + 1; j < nums2.length; j++) {
-				if (nums1[i] < nums2[j]) {
-					answer[i] = nums2[j];
-					break;
-				}
-			}
-		}
+		stack.push(nums2[i]);
 	}
+
+	const answer = nums1.map((num) => {
+		return map.has(num) ? (map.get(num) as number) : -1;
+	});
 
 	return answer;
 }
