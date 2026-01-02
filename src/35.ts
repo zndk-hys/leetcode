@@ -1,27 +1,22 @@
 function searchInsert(nums: number[], target: number): number {
   let left = 0;
-  let right = nums.length - 1;
-  let idx = Math.floor((right + left) / 2);
+  let right = nums.length;
 
   while (left < right) {
+    const idx = Math.floor((right + left) / 2);
+
     if (nums[idx] === target) {
       return idx;
     }
 
     if (nums[idx] > target) {
-      right = idx - 1;
+      right = idx;
     } else if (nums[idx] < target) {
       left = idx + 1;
     }
-
-    idx = Math.floor((right + left) / 2);
   }
 
-  if (nums[idx] >= target) {
-    return idx;
-  }
-
-  return idx + 1;
+  return left;
 }
 
 console.log(searchInsert([1], 5)); // 1
