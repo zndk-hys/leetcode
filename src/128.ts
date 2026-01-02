@@ -1,18 +1,18 @@
 function longestConsecutive(nums: number[]): number {
-	const set = new Set<number>(nums);
+  const set = new Set<number>(nums);
 
-	let max = 0;
-	for (const x of set) {
-		if (!set.has(x - 1)) {
-			let length = 1;
-			while (set.has(x + length)) {
-				length++;
-			}
-			max = Math.max(max, length);
-		}
-	}
+  let max = 0;
+  for (const x of set) {
+    if (!set.has(x - 1)) {
+      let length = 1;
+      while (set.has(x + length)) {
+        length++;
+      }
+      max = Math.max(max, length);
+    }
+  }
 
-	return max;
+  return max;
 }
 
 console.log(longestConsecutive([100, 4, 200, 1, 3, 2])); // 4

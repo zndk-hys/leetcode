@@ -1,25 +1,25 @@
 function minSubArrayLen(target: number, nums: number[]): number {
-	let minLength = nums.length + 1;
+  let minLength = nums.length + 1;
 
-	let left = 0;
-	let sum = 0;
+  let left = 0;
+  let sum = 0;
 
-	for (let right = 0; right < nums.length; right++) {
-		sum += nums[right];
+  for (let right = 0; right < nums.length; right++) {
+    sum += nums[right];
 
-		while (sum >= target) {
-			if (left === right) return 1;
-			minLength = Math.min(minLength, right - left + 1);
-			sum -= nums[left];
-			left++;
-		}
-	}
+    while (sum >= target) {
+      if (left === right) return 1;
+      minLength = Math.min(minLength, right - left + 1);
+      sum -= nums[left];
+      left++;
+    }
+  }
 
-	if (minLength === nums.length + 1) {
-		return 0;
-	}
+  if (minLength === nums.length + 1) {
+    return 0;
+  }
 
-	return minLength;
+  return minLength;
 }
 
 console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3])); // 2;

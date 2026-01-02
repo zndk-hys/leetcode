@@ -1,17 +1,17 @@
 function rotate(nums: number[], k: number): void {
-	k = k % nums.length;
+  k = k % nums.length;
 
-	reverce(nums, 0, nums.length - 1);
-	reverce(nums, 0, k - 1);
-	reverce(nums, k, nums.length - 1);
+  reverce(nums, 0, nums.length - 1);
+  reverce(nums, 0, k - 1);
+  reverce(nums, k, nums.length - 1);
 }
 
 function reverce(nums: number[], x: number, y: number) {
-	while (x < y) {
-		[nums[x], nums[y]] = [nums[y], nums[x]];
-		x++;
-		y--;
-	}
+  while (x < y) {
+    [nums[x], nums[y]] = [nums[y], nums[x]];
+    x++;
+    y--;
+  }
 }
 
 const nums1 = [1, 2, 3, 4, 5, 6, 7];

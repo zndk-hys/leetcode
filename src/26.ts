@@ -1,15 +1,15 @@
 function removeDuplicates(nums: number[]): number {
-	if (nums.length === 0) return 0;
-	let write = 1;
+  if (nums.length === 0) return 0;
+  let write = 1;
 
-	for (let read = 1; read < nums.length; read++) {
-		if (nums[write - 1] !== nums[read]) {
-			nums[write] = nums[read];
-			write++;
-		}
-	}
+  for (let read = 1; read < nums.length; read++) {
+    if (nums[write - 1] !== nums[read]) {
+      nums[write] = nums[read];
+      write++;
+    }
+  }
 
-	return write;
+  return write;
 }
 
 const nums1 = [1, 1, 2];

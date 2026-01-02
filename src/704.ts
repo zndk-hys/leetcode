@@ -1,20 +1,20 @@
 function search(nums: number[], target: number): number {
-	let left = 0;
-	let right = nums.length;
+  let left = 0;
+  let right = nums.length;
 
-	while (right > left) {
-		const idx = Math.floor((right + left) / 2);
+  while (right > left) {
+    const idx = Math.floor((right + left) / 2);
 
-		if (nums[idx] === target) {
-			return idx;
-		} else if (nums[idx] > target) {
-			right = idx;
-		} else {
-			left = idx + 1;
-		}
-	}
+    if (nums[idx] === target) {
+      return idx;
+    } else if (nums[idx] > target) {
+      right = idx;
+    } else {
+      left = idx + 1;
+    }
+  }
 
-	return -1;
+  return -1;
 }
 
 console.log(search([-1, 0, 3, 5, 9, 12], 9)); // 4

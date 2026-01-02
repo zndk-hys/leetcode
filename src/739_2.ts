@@ -1,22 +1,22 @@
 function dailyTemperatures(temperatures: number[]): number[] {
-	if (temperatures.length === 0) return [];
+  if (temperatures.length === 0) return [];
 
-	const t = temperatures;
-	const answer = Array(t.length).fill(0);
-	const stack: number[] = [];
+  const t = temperatures;
+  const answer = Array(t.length).fill(0);
+  const stack: number[] = [];
 
-	for (let i = 0; i < t.length; i++) {
-		while (
-			stack.length > 0 &&
-			(t[i] as number) > (t[stack[stack.length - 1] as number] as number)
-		) {
-			const d = stack.pop() as number;
-			answer[d] = i - d;
-		}
-		stack.push(i);
-	}
+  for (let i = 0; i < t.length; i++) {
+    while (
+      stack.length > 0 &&
+      (t[i] as number) > (t[stack[stack.length - 1] as number] as number)
+    ) {
+      const d = stack.pop() as number;
+      answer[d] = i - d;
+    }
+    stack.push(i);
+  }
 
-	return answer;
+  return answer;
 }
 
 console.log(dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]));

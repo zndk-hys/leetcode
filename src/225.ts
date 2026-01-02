@@ -1,31 +1,31 @@
 class MyStack {
-	private a: number[];
-	private b: number[];
+  private a: number[];
+  private b: number[];
 
-	constructor() {
-		this.a = [];
-		this.b = [];
-	}
+  constructor() {
+    this.a = [];
+    this.b = [];
+  }
 
-	push(x: number): void {
-		this.a.push(x);
-		while (this.b.length > 0) {
-			this.a.push(this.b.shift() as number);
-		}
-		[this.a, this.b] = [this.b, this.a];
-	}
+  push(x: number): void {
+    this.a.push(x);
+    while (this.b.length > 0) {
+      this.a.push(this.b.shift() as number);
+    }
+    [this.a, this.b] = [this.b, this.a];
+  }
 
-	pop(): number {
-		return this.b.shift() as number;
-	}
+  pop(): number {
+    return this.b.shift() as number;
+  }
 
-	top(): number {
-		return this.b[0];
-	}
+  top(): number {
+    return this.b[0];
+  }
 
-	empty(): boolean {
-		return this.b.length === 0;
-	}
+  empty(): boolean {
+    return this.b.length === 0;
+  }
 }
 
 const stack1 = new MyStack();

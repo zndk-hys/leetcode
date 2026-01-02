@@ -1,33 +1,33 @@
 class MyQueue {
-	private a: number[];
-	private b: number[];
+  private a: number[];
+  private b: number[];
 
-	constructor() {
-		this.a = [];
-		this.b = [];
-	}
+  constructor() {
+    this.a = [];
+    this.b = [];
+  }
 
-	push(x: number): void {
-		this.a.push(x);
-	}
+  push(x: number): void {
+    this.a.push(x);
+  }
 
-	pop(): number {
-		this.peek();
-		return this.b.pop() as number;
-	}
+  pop(): number {
+    this.peek();
+    return this.b.pop() as number;
+  }
 
-	peek(): number {
-		if (this.b.length === 0) {
-			while (this.a.length > 0) {
-				this.b.push(this.a.pop() as number);
-			}
-		}
-		return this.b[this.b.length - 1];
-	}
+  peek(): number {
+    if (this.b.length === 0) {
+      while (this.a.length > 0) {
+        this.b.push(this.a.pop() as number);
+      }
+    }
+    return this.b[this.b.length - 1];
+  }
 
-	empty(): boolean {
-		return this.a.length + this.b.length === 0;
-	}
+  empty(): boolean {
+    return this.a.length + this.b.length === 0;
+  }
 }
 
 const queue1 = new MyQueue();

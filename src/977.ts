@@ -1,22 +1,22 @@
 function sortedSquares(nums: number[]): number[] {
-	const answer = Array(nums.length);
-	let left = 0;
-	let right = nums.length - 1;
+  const answer = Array(nums.length);
+  let left = 0;
+  let right = nums.length - 1;
 
-	for (let answerIdx = answer.length - 1; answerIdx >= 0; answerIdx--) {
-		const squaredLeft = nums[left] ** 2;
-		const squaredRight = nums[right] ** 2;
+  for (let answerIdx = answer.length - 1; answerIdx >= 0; answerIdx--) {
+    const squaredLeft = nums[left] ** 2;
+    const squaredRight = nums[right] ** 2;
 
-		if (squaredLeft > squaredRight) {
-			answer[answerIdx] = squaredLeft;
-			left++;
-		} else {
-			answer[answerIdx] = squaredRight;
-			right--;
-		}
-	}
+    if (squaredLeft > squaredRight) {
+      answer[answerIdx] = squaredLeft;
+      left++;
+    } else {
+      answer[answerIdx] = squaredRight;
+      right--;
+    }
+  }
 
-	return answer;
+  return answer;
 }
 
 console.log(sortedSquares([-4, -1, 0, 3, 10])); // [0,1,9,16,100]
