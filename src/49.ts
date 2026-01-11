@@ -2,18 +2,18 @@ function groupAnagrams(strs: string[]): string[][] {
   const map = new Map<string, string[]>();
 
   for (let i = 0; i < strs.length; i++) {
-    const key = strs[i].split("").sort().join("");
+    const count = Array(26).fill(0);
+    for (let j = 0; j < strs[i].length; j++) {
+      count[strs[i][j].charCodeAt(0) - 97]++;
+    }
+    const key = count.join("_");
+
     const group = map.get(key) ?? [];
     group.push(strs[i]);
     map.set(key, group);
   }
 
-  const answer = [];
-  for (const [_, value] of map) {
-    answer.push(value);
-  }
-
-  return answer;
+  return Array.from(map.values());
 }
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])); // [["bat"],["nat","tan"],["ate","eat","tea"]]
