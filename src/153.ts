@@ -1,20 +1,17 @@
 function findMin(nums: number[]): number {
-  let base = nums[0];
   let left = 0;
   let right = nums.length - 1;
 
   while (left < right) {
-    const target = Math.floor((left + right) / 2);
-    if (base > nums[target]) {
-      right = target - 1;
-      base = nums[target];
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] < nums[right]) {
+      right = mid;
     } else {
-      left = target + 1;
-      base = Math.min(base, nums[left]);
+      left = mid + 1;
     }
   }
 
-  return base;
+  return nums[left];
 }
 
 console.log(findMin([3, 4, 5, 1, 2])); // 1
