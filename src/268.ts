@@ -1,11 +1,11 @@
 function missingNumber(nums: number[]): number {
-  let sum = (nums.length * (nums.length + 1)) / 2;
+  let xor = nums.length;
 
   for (let i = 0; i < nums.length; i++) {
-    sum -= nums[i];
+    xor ^= i ^ nums[i];
   }
 
-  return sum;
+  return xor;
 }
 
 console.log(missingNumber([3, 0, 1])); // 2
