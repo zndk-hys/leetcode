@@ -16,15 +16,11 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
     return Math.max(leftDepth, rightDepth) + 1;
   };
 
-  if (root === null) {
-    return 0;
-  }
+  depth(root);
 
-  const leftDepth = depth(root.left);
-  const rightDepth = depth(root.right);
-
-  return Math.max(max, leftDepth + rightDepth);
+  return max;
 }
 
 console.log(diameterOfBinaryTree(arrayToTree([1, 2, 3, 4, 5]))); // 3
 console.log(diameterOfBinaryTree(arrayToTree([1, 2]))); // 1
+console.log(diameterOfBinaryTree(arrayToTree([1]))); // 0
