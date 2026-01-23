@@ -1,23 +1,30 @@
 import { arrayToTree, type TreeNode } from "./lib/TreeNode";
 
 function levelOrder(root: TreeNode | null): number[][] {
+  if (root === null) {
+    return [];
+  }
+
   const answer: number[][] = [];
+  const queue: TreeNode[] = [root];
 
-  const save = (root: TreeNode | null, depth: number) => {
-    if (root === null) {
-      return;
+  while (queue.length > 0) {
+    const levels: number[] = [];
+    const nums = queue.length;
+    for (let i = 0; i < nums; i++) {
+      const node = queue.shift() as TreeNode;
+      levels.push(node.val);
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+
+      if (node.right) {
+        queue.push(node.right);
+      }
     }
-
-    if (answer.length === depth) {
-      answer.push([]);
-    }
-    answer[depth].push(root.val);
-
-    save(root.left, depth + 1);
-    save(root.right, depth + 1);
-  };
-
-  save(root, 0);
+    answer.push(levels);
+  }
 
   return answer;
 }
